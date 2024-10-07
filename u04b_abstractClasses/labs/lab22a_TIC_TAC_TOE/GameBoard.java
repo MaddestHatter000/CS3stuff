@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -67,8 +67,11 @@ public class GameBoard extends Canvas implements MouseListener
 			if(determineWinner(window))
 			{
 			  //make a new board	
+			  board = new Grid(BOARDSIZE,BOARDSIZE);
 			  
 			  //clear the screen
+			  board.drawGrid(window);
+			  
 			}	
 			mouseClicked = false;
 		}
@@ -92,12 +95,16 @@ public class GameBoard extends Canvas implements MouseListener
 				prevMouseButton=mouseButton;
 			}
 			//if BUTTON3 was pressed and BUTTON3 was not pressed last mouse press
-
-
+			if(mouseButton==MouseEvent.BUTTON3&&prevMouseButton!=mouseButton)
+			{
+				if(piece==null)
+				{
+					board.setSpot(r,c,new Piece(5+c*50+50,5+r*50+50,WIDTH/3-10,HEIGHT/3-10,"O",Color.RED));
+				}
 				//save the current button pressed to compare to next button pressed
 				prevMouseButton=mouseButton;				
-		
-		}
+			}
+		}	
 	}
 	
 	public boolean determineWinner(Graphics window)
@@ -122,12 +129,41 @@ public class GameBoard extends Canvas implements MouseListener
 		
 		if(winner.equals(""))
 		{
-			//check for diagonal winner
+			for (int c = 0; c<board.getNumRows(); c++){
+				//check for diagonal winner
+				Piece col0 = (Piece)board.getSpot(0,c);
+				Piece col1 = (Piece)board.getSpot(1,c);
+				Piece col2 = (Piece)board.getSpot(2,c);
+				
+				if(col0==null||col1==null||col2==null) continue;
+				
+				if(col0.getName().equals(col1.getName())&&col0.getName().equals(col2.getName()))
+				{
+					winner=col0.getName()+" wins verticlly!";
+					break;
+				}
+			}
 		}
 		
 		if(winner.equals(""))
 		{
-			//check for diagonal winner
+
+			Piece p0 = (Piece)board.getSpot(0,0);
+			Piece p1 = (Piece)board.getSpot(1,1);
+			Piece p2 = (Piece)board.getSpot(2,2);
+
+			if(!(p0==null||p1==null||p2==null)&&p0.getName().equals(p1.getName())&&p0.getName().equals(p2.getName())) 
+				winner=p0.getName()+" wins diagonally!";
+		}
+		if(winner.equals(""))
+		{
+
+			Piece p0 = (Piece)board.getSpot(0,2);
+			Piece p1 = (Piece)board.getSpot(1,1);
+			Piece p2 = (Piece)board.getSpot(2,0);
+
+			if(!(p0==null||p1==null||p2==null)&&p0.getName().equals(p1.getName())&&p0.getName().equals(p2.getName())) 
+				winner=p0.getName()+" wins diagonally!";
 		}
 
 		if(winner.indexOf("no name")>-1){

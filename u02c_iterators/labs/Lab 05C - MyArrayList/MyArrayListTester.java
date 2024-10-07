@@ -1,5 +1,5 @@
 import java.util.Iterator;
-import myarraylist.MyArrayList;
+//import myarraylist.MyArrayList;
 
 public class MyArrayListTester
 {
@@ -18,7 +18,7 @@ public class MyArrayListTester
     	System.out.println("Adding \"Lemon\" to the list.");
     	list.add("Lemon");
     	System.out.println("Adding \"Orange\" to the list.");
-    	list.add("Pear");
+    	list.add("Orange");
     	System.out.println("Adding \"Peach\" to the list.");
     	list.add("Peach");
     	System.out.println("\nThe capacity of list is now " + list.capacity());

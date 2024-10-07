@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -19,8 +19,7 @@ public class Grid
 
 	public Grid(int rows, int cols)
 	{
-	
-	
+		setSize(rows, cols);
 	}
 
 	public void setSize(int rows, int cols)
@@ -30,7 +29,7 @@ public class Grid
 
 	public void setSpot(int row,int col, Cell val)
 	{
-	
+		grid[row][col] = val;
 	
 	}
 	
@@ -61,11 +60,12 @@ public class Grid
 			{
 				Cell spot = grid[r][c];
 				
-				//if the current spot is not null
-
-
-				//else
-
+				if(spot != null){
+					spot.draw(window);
+				}
+				else{
+					full = false;
+				}
 			}
 		}
 		return full;
@@ -74,15 +74,16 @@ public class Grid
 	public String toString()
 	{
 		String output="";
-		//for loop for row
-	
-	
-			//for loop for col
-	
-	
-	
-	
-	
+		for(int r=0;r<grid.length;r++)
+		{
+			for(int c=0;c<grid[r].length;c++)
+			{
+				if(grid[r][c] == null)
+					output += null + " ";
+				else
+					output +=grid[r][c].toString() + " ";
+			}
+		}
 	
 		return output;
 	}

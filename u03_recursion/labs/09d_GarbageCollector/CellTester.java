@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -15,7 +15,7 @@ public class CellTester
 		out.println(CellOne);
 		
 		Cell redChecker = new ColoredCell(false);
-		out.println(redChecker);	
+		out.println(redChecker);
 		
 		Cell theShoe = new ColoredCell(100,100,true);
 		out.println(theShoe);	

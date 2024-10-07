@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -17,6 +17,11 @@ public class UniquesDupes
 		Set<String> uniques = new TreeSet<String>();
 
 		//add code
+		for(int i = 0; i < input.length(); i++){
+				uniques.add(input.substring(i, i+1));
+			}
+		}
+		
 
 		return uniques;
 	}

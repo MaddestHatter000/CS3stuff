@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -29,4 +29,3 @@ public class GridTester
 		out.println(gridTest.getSpot(0,1));							
 	}
 }
-

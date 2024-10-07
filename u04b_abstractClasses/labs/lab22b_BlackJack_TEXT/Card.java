@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -15,15 +15,32 @@ public abstract class Card
 	private int face;
 
   	//constructors
-
+	Card(){
+		setSuit(null);
+		setFace(0);
+	}
+	Card(String s, int f){
+		setSuit(s);
+		setFace(f);
+	}
 
 
 	// modifiers
+	public void setSuit(String s){
+		suit = s;
+	}
+
+	public void setFace(int f){
+		face = f;
+	}
 
 
  
 
   	//accessors
+	public String getSuit(){
+		return suit;
+	}
 
 
 

@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -13,6 +13,19 @@ public class Lab05a
 {
 	public static void main ( String[] args )
 	{
-		//add test cases	
+		IteratorTest test = new IteratorTest("abcabca", "a");
+		test.remove();
+		out.println(test);
+		out.println();
+
+		test.setTest("abcdefghijxxxx", "x");
+		test.remove();
+		out.println(test);
+		out.println();
+
+		test.setTest("123456abcabc", "b");
+		test.remove();
+		out.println(test);
+		out.println();
 	}
 }

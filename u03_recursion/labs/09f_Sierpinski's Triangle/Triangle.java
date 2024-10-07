@@ -1,10 +1,11 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
 //Lab  -
 
 import java.awt.Graphics;
+import java.util.concurrent.TimeUnit;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Canvas;
@@ -32,8 +33,18 @@ public class Triangle extends Canvas implements Runnable
 	{
 		//if statement base case
 			//midpoint = (x1 + x2 / 2), (y1 + y2/ 2)
-			
+		if(x1-x2 != 0 && x2-x3 != 0 && x3-x1 != 0){
+
 			window.drawLine(x1, y1, x2, y2);
+			window.drawLine(x2, y2, x3, y3);
+			window.drawLine(x3, y3, x1, y1);
+
+			run();
+
+			triangle(window, x1, y1, (x2 + x1)/2, (y2 + y1)/2, (x3 + x1)/2, (y3 + y1)/2);
+			triangle(window, (x1 + x2)/2, (y1 + y2)/2, x2, y2, (x3 + x2)/2, (y3 + y2)/2);
+			triangle(window, (x1 + x3)/2, (y1 + y3)/2, (x2 + x3)/2, (y2 + y3)/2, x3, y3);
+		}
 	}
 	
 	public void run()

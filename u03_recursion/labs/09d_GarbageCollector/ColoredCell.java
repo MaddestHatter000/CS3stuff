@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -22,41 +22,46 @@ public class ColoredCell extends Cell
 
 	public ColoredCell(boolean fill)
 	{
-
-
+		super(5,5,5,5);
+		setFilled(fill);
+		setColor(Color.BLUE);	
 	}
 
 	public ColoredCell(int x, int y, boolean fill)
 	{
-
+		super(x,y,5,5);
+		setFilled(fill);
+		setColor(Color.BLUE);	
 
 	}
 
 	public ColoredCell(int x, int y, int w, int h, boolean fill)
 	{
-
-
+		super(x,y,w,h);
+		setFilled(fill);
+		setColor(Color.BLUE);	
 	}
 
 	public ColoredCell(int x, int y, int w, int h, boolean fill, Color c)
 	{
-
-
+		super(x,y,w,h);
+		setFilled(fill);
+		setColor(c);	
 	}
 
 	public void setFilled(boolean fill)
 	{
-
+		filled = fill;
 	}
 
 	public void setColor(Color c)
 	{
-
+		color = c;
 	}
 	
 	public boolean getFilled()
 	{
-		return false;
+		return filled;
 	}
 	
 	public Color getColor()
@@ -66,14 +71,13 @@ public class ColoredCell extends Cell
 	
 	public void draw(Graphics window)
 	{
+		if(getFilled()){
+			window.setColor(color.GREEN);
+			window.fillRect(getX(),getY(),getWidth(),getHeight());
+		}
 		window.setFont(new Font("TAHOMA",Font.BOLD,28));
 		window.setColor(getColor());
 		window.drawRect(getX(),getY(),getWidth(),getHeight());
-
-
-
-
-
 	}
 	
 	public String toString()
