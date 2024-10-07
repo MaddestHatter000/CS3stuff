@@ -15,21 +15,22 @@ public class UniquesDupes
 	public static Set<String> getUniques(String input)
 	{
 		Set<String> uniques = new TreeSet<String>();
-
-		//add code
-		for(int i = 0; i < input.length(); i++){
-				uniques.add(input.substring(i, i+1));
-			}
+		for(String i : input.split(" ")){
+			uniques.add(i);
 		}
-		
-
 		return uniques;
 	}
 
 	public static Set<String> getDupes(String input)
 	{
-		//add code
-		
-		return null;
+		String all = "";
+		Set<String> dupes = new TreeSet<String>();
+		for(String i : input.split(" ")){
+			if(all.contains(i))
+				dupes.add(i);
+			else
+				all += i;
+		}
+		return dupes;
 	}
 }
