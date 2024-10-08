@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -17,10 +17,21 @@ public class OddEvenSets
 
 	public OddEvenSets()
 	{
+		odds = new TreeSet<>();
+		evens = new TreeSet<>();
 	}
 
 	public OddEvenSets(String line)
 	{
+		odds = new TreeSet<>();
+		evens = new TreeSet<>();
+		for(String str : line.split(" ")){
+			int i = Integer.parseInt(str);
+			if(i % 2 == 0)
+				evens.add(i);
+			else
+				odds.add(i);
+		}
 	}
 
 	public String toString()

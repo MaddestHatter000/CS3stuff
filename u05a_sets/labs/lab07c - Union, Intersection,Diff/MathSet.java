@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -16,35 +16,60 @@ public class MathSet
 
 	public MathSet()
 	{
+		one = new TreeSet<>();
+		two = new TreeSet<>();
 	}
 
 	public MathSet(String o, String t)
 	{
+		one = new TreeSet<>();
+		two = new TreeSet<>();
+		for(String i : o.split(" ")){
+			one.add(Integer.parseInt(i));
+		}
+		for(String i : t.split(" ")){
+			two.add(Integer.parseInt(i));
+		}
 	}
 
 	public Set<Integer> union()
 	{
-		return null;
+		Set<Integer> output = new TreeSet<>();
+		output.addAll(one);
+		output.addAll(two);
+		return output;
 	}
 
 	public Set<Integer> intersection()
 	{
-		return null;
+		Set<Integer> output = new TreeSet<>();
+		output.addAll(one);
+		output.retainAll(two);
+		return output;
 	}
 
 	public Set<Integer> differenceAMinusB()
 	{
-		return null;
+		Set<Integer> output = new TreeSet<>();
+		output.addAll(one);
+		output.removeAll(two);
+		return output;
 	}
 
 	public Set<Integer> differenceBMinusA()
 	{
-		return null;
+		Set<Integer> output = new TreeSet<>();
+		output.addAll(two);
+		output.removeAll(one);
+		return output;
 	}
 	
 	public Set<Integer> symmetricDifference()
-	{		
-		return null;
+	{
+		Set<Integer> output = new TreeSet<>();
+		output.addAll(union());
+		output.removeAll(intersection());
+		return output;
 	}	
 	
 	public String toString()

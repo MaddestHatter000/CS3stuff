@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -13,6 +13,18 @@ public class Lab07c
 {
 	public static void main(String args[]) throws IOException
 	{
-		//add test cases
+		Scanner scan = new Scanner(new File("lab07c.dat"));
+		MathSet test;
+		while(scan.hasNextLine()){
+			test = new MathSet(scan.nextLine(), scan.nextLine());
+			out.println(test);
+			out.println("Union - " + test.union());
+			out.println("Intersection - " + test.intersection());
+			out.println("Difference A-B - " + test.differenceAMinusB());
+			out.println("Difference B-A - " + test.differenceBMinusA());
+			out.println("Symmetric Difference - " + test.symmetricDifference());
+			out.println();
+			
+		}
 	}
 }

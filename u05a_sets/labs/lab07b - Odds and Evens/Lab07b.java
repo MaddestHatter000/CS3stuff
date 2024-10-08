@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -13,7 +13,11 @@ public class Lab07b
 {
 	public static void main( String args[] ) throws IOException
 	{
-		//more test cases
-				
+		Scanner scan = new Scanner(new File("lab07b.dat"));
+		OddEvenSets test;
+		while(scan.hasNextLine()){
+			test = new OddEvenSets(scan.nextLine());
+			out.println(test);
+		}
 	}
 }
