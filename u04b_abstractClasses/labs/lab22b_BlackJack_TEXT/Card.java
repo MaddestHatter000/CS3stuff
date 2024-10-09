@@ -50,6 +50,7 @@ public abstract class Card
 
 	public boolean equals(Object obj)
 	{
+		
 
 
 

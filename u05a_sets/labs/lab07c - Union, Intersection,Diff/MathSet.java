@@ -74,6 +74,13 @@ public class MathSet
 	
 	public String toString()
 	{
-		return "Set one " + one + "\n" +	"Set two " + two +  "\n";
+		String output = "";
+		output += "Set one " + one + "\n" +	"Set two " + two +  "\n\n";
+		output += "Union - " + union() + "\n";
+		output += "Intersection - " + intersection() + "\n";
+		output += "Difference A-B - " + differenceAMinusB() + "\n";
+		output += "Difference B-A - " + differenceBMinusA() + "\n";
+		output += "Symmetric Difference - " + symmetricDifference() + "\n";
+		return output;
 	}
 }

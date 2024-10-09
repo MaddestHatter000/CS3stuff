@@ -18,13 +18,6 @@ public class Lab07c
 		while(scan.hasNextLine()){
 			test = new MathSet(scan.nextLine(), scan.nextLine());
 			out.println(test);
-			out.println("Union - " + test.union());
-			out.println("Intersection - " + test.intersection());
-			out.println("Difference A-B - " + test.differenceAMinusB());
-			out.println("Difference B-A - " + test.differenceBMinusA());
-			out.println("Symmetric Difference - " + test.symmetricDifference());
-			out.println();
-			
 		}
 	}
 }
