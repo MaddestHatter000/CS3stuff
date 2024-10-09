@@ -6,8 +6,6 @@
 
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.Arrays;
-import static java.lang.System.*;
 
 public class MathSet
 {

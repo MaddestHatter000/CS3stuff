@@ -19,5 +19,6 @@ public class Lab07c
 			test = new MathSet(scan.nextLine(), scan.nextLine());
 			out.println(test);
 		}
+		scan.close();
 	}
 }
