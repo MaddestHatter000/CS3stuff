@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -15,6 +15,12 @@ public class Lab06b
 {
 	public static void main( String args[] ) throws IOException
 	{
-		//add test cases		
+		Scanner scan = new Scanner(new File("lab06b.dat"));
+		ArrayList<VowelWord> list = new ArrayList<>();
+		while(scan.hasNext()){
+			list.add(new VowelWord(scan.next()));
+		}
+		Collections.sort(list);
+		out.println(list);
 	}
 }

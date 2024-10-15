@@ -31,7 +31,7 @@ public class MathSet
 	}
 
 	public Set<Integer> union()
-	{
+	{																										
 		Set<Integer> output = new TreeSet<>();
 		output.addAll(one);
 		output.addAll(two);

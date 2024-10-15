@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -8,10 +8,12 @@ import static java.lang.System.*;
 
 class SiteName implements Comparable<SiteName>
 {
-	//add instance variables
-	
-	
-	//add a constructor
+	private String catagory, name;
+
+	public SiteName(String s){
+		catagory = s.substring(s.length() - 5);
+		name = s.substring(0, s.length() - 5);
+	}
 
 
 	//add a compareTo

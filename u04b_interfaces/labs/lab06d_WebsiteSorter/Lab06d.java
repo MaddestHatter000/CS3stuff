@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -15,6 +15,12 @@ public class Lab06d
 {
 	public static void main ( String[] args ) throws IOException
 	{
-
+		Scanner scan = new Scanner(new File("lab06d.dat"));
+		ArrayList<SiteName> list = new ArrayList<>();
+		while(scan.hasNext())
+			list.add(new SiteName(scan.next()));
+		Collections.sort(list);
+		for(int i = 0; i < list.size(); i++)
+			out.println(list.get(i));
 	}
 }
