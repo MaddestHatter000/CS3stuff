@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -19,8 +19,8 @@ public class ClassTester
 		test.addStudent(2,new Student("Fred","4 - 50 50 70 68"));				
 		out.println(test);
 		
-		test.sort();
-		out.println(test);
+		//test.sort();
+		//out.println(test);
 		
 		out.println(String.format(test.getStudentName(0) + "\'s average = %.2f",test.getStudentAverage(0)));	
 		out.println(String.format(test.getStudentName(1) + "\'s average = %.2f",test.getStudentAverage(1)));	

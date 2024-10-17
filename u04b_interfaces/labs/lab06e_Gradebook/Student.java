@@ -1,13 +1,13 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
 //Lab  -
 
-import java.util.Arrays;
-import java.util.Scanner;
-import static java.lang.System.*;
-import static java.util.Arrays.*;
+// import java.util.Arrays;
+// import java.util.Scanner;
+// import static java.lang.System.*;
+// import static java.util.Arrays.*;
 
 public class Student implements Comparable<Student>
 {
@@ -22,66 +22,66 @@ public class Student implements Comparable<Student>
 	
 	public Student(String name, String gradeList)
 	{
-
-
-
+		setName(name);
+		setGrades(gradeList);
 	}
 	
 	public void setName(String name)
 	{
-
-
+		myName = name;
 	}	
 	
 	public void setGrades(String gradeList)
 	{
-
-	
+		myGrades = new Grades(gradeList);
 	}
 	
 	public void setGrade(int spot, double grade)
 	{
-
+		myGrades.setGrade(spot, grade);
 
 	}
 
 	public String getName()
 	{
-		return "";
+		return myName;
 	}
-	
 	public int getNumGrades()
 	{
-		return 0;
+		return myGrades.getNumGrades();
 	}
 
 	public double getSum()
 	{
-		return 0.0;
+		return myGrades.getSum();
 	}
 	
 	public double getAverage()
 	{
-		return 0.0;
+		return getSum()/getNumGrades();
 	}
 
 	public double getAverageMinusLow()
 	{
-		return 0.0;
+		return (getSum()-getLowGrade())/(getNumGrades() - 1);
 	}
 	
 	public double getHighGrade()
 	{
-		return 0.0;		
+		return myGrades.getHighGrade();		
 	}
 	
 	public double getLowGrade()
 	{
-		return 0.0;	
+		return myGrades.getLowGrade();	
 	}
 
 	public int compareTo(Student param)
 	{
+		if(this.getAverage() > param.getAverage())
+			return 1;
+		if(this.getAverage() < param.getAverage())
+			return -1;
 		return 0;
 	}
 	
@@ -92,6 +92,6 @@ public class Student implements Comparable<Student>
 	
 	public String toString()
 	{
-		return "";
+		return myName + " = " + myGrades;
 	}	
 }
