@@ -1,15 +1,15 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
 //Lab  -
 
-package BlackJack;
+// package BlackJack;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import BlackJack.Card;
+// import BlackJack.Card;
 
 public class Deck
 {
@@ -25,30 +25,31 @@ public class Deck
 	public Deck ()
 	{
 		//initialize data - stackOfCards - topCardIndex
-		
-		
-		//loop through suits
-			//loop through faces
-				//add in a new card
-		
+		stackOfCards = new ArrayList<>();
+		for(int s = 0; s < NUMSUITS; s++){
+			for(int f = 1; f <= NUMFACES; f++){
+				stackOfCards.add(new BlackJackCard(f, SUITS[s]));
+			}
+		}
+		topCardIndex = stackOfCards.size() - 1;
 	}
 
 	//modifiers
    public void shuffle ()
 	{
-		//shuffle the deck
-		//reset variables as needed
+		Collections.shuffle(stackOfCards);
+		topCardIndex = stackOfCards.size() - 1;
 	}
 
    //accessors
 	public int  size ()
 	{
-		return 0;
+		return stackOfCards.size();
 	}
 
 	public int numCardsLeft()
 	{
-		return 0;
+		return topCardIndex + 1;
 	}
 
 	public Card nextCard()

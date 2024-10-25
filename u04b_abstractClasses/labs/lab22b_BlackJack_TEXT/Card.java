@@ -4,7 +4,7 @@
 //Class -
 //Lab  -
 
-package BlackJack;
+// package BlackJack;
 
 public abstract class Card
 {
@@ -16,10 +16,10 @@ public abstract class Card
 
   	//constructors
 	Card(){
-		setSuit(null);
+		setSuit("");
 		setFace(0);
 	}
-	Card(String s, int f){
+	Card(int f, String s){
 		setSuit(s);
 		setFace(f);
 	}
@@ -42,21 +42,25 @@ public abstract class Card
 		return suit;
 	}
 
+	public int getFace(){
+		return face;
+	}
+
+	public abstract int getValue();
 
 
-
-
-  	public abstract int getValue();
 
 	public boolean equals(Object obj)
 	{
-		
-
-
-
-		return false;
+		if(!(obj instanceof Card))
+			return false;
+		return ((Card)obj).getSuit().equals(suit) && ((Card)obj).getFace() == face;
+	
 	}
 
   	//toString
+	public String toString(){
+		return FACES[face] + " of " + suit;
+	}
   	
  }

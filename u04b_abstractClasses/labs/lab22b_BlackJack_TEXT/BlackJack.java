@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -7,11 +7,11 @@
 import static java.lang.System.*;
 import java.util.Scanner;
 
-import BlackJack.Card;
-import BlackJack.BlackJackCard;
-import BlackJack.Deck;
-import BlackJack.Player;
-import BlackJack.Dealer;
+// import BlackJack.Card;
+// import BlackJack.BlackJackCard;
+// import BlackJack.Deck;
+// import BlackJack.Player;
+// import BlackJack.Dealer;
 
 public class BlackJack
 {
