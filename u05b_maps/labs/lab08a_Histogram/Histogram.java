@@ -39,7 +39,7 @@ public class Histogram
 	public String toString()
 	{
 		String output= "";
-		for(Map.Entry<String, Integer>entry : histogram.entrySet())
+		for(Map.Entry<String, Integer> entry : histogram.entrySet())
 		{	
 			output += entry.getKey() + "   ";
 			for(int i = 0; i < entry.getValue(); i++)
