@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -17,7 +17,7 @@ public class PartList
 	
 	public PartList()
 	{
-
+		partsMap = new TreeMap<>();
 
 	}
 	
@@ -27,12 +27,16 @@ public class PartList
 		try
 		{
 			Scanner file = new Scanner(new File("lab08d.dat"));
-			//add code here to read from the file 
-			//and add Parts to the map
-
-
-
-
+			while(file.hasNextLine()){
+				Part part = new Part(file.nextLine());
+				if(partsMap.containsKey(part))
+				{
+					partsMap.put(part, partsMap.get(part) + 1);
+				}
+				else{
+					partsMap.put(part, 1);
+				}
+			}
 		}
 		catch( IOException e )  //Most specific exceptions must be listed 1st
 		{
@@ -55,10 +59,9 @@ public class PartList
 	public String toString()
 	{
 		String output="";
-
-
-
-
+		for(Map.Entry<Part,Integer> entry : partsMap.entrySet()){
+			output += entry.getKey().toString() + " - " + entry.getValue() + "\n";
+		}
 		return output;
 	}
 }
