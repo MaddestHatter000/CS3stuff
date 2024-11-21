@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -16,38 +16,35 @@ public class IntQueue
 	//pick your storage for the queue
 	//you can use the an array or an ArrayList
 
-	//option 1
-	private int[] rayOfInts;
-	private int numInts;
-
-	//option 2
 	private ArrayList<Integer> listOfInts;
 
 	public IntQueue()
 	{
+		listOfInts = new ArrayList<>();
 	}
 
 	public void add(int item)
 	{
+		listOfInts.add(item);
 	}
 
 	public int remove()
 	{
-		return 0;
+		return listOfInts.remove(0);
 	}
 
 	public boolean isEmpty()
 	{
-		return false;
+		return listOfInts.size() == 0;
 	}
 
 	public int peek()
 	{
-		return 0;
+		return listOfInts.get(0);
 	}
 
 	public String toString()
 	{
-		return "";
+		return listOfInts.toString();
 	}
 }

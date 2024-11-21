@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -14,6 +14,7 @@ public class PalinList
 {
 	private Queue<String> queue;
 	private Stack<String> stack;
+	private String output;
 
 	public PalinList()
 	{
@@ -22,17 +23,38 @@ public class PalinList
 
 	public PalinList(String list)
 	{
+		setList(list);
 	}
 
 	public void setList(String list)
 	{
+		queue = new LinkedList<>();
+		stack = new Stack<>();
+		for(String i : list.split(" "))
+		{
+			queue.add(i);
+			stack.push(i);
+		}
+		output = queue.toString();
 	}
 
 	public boolean isPalin()
 	{
+		while(!queue.isEmpty() && !stack.isEmpty())
+		{
+			if(!queue.remove().equals(stack.pop()))
+				return false;
+		}
 		return true;
 	}
 
 
-	//write a toString method
+	public String toString()
+	{
+		if(isPalin())
+			output += " is a palinlist.";
+		else
+			output += " is not a palinlist.";
+		return output;
+	}
 }

@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -9,6 +9,8 @@
 //array of ints
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import static java.lang.System.*;
 
 public class IntStack
@@ -17,39 +19,39 @@ public class IntStack
 	//you can use the an array or an ArrayList
 
 	//option 1
-	private int[] rayOfInts;
-	private int numInts;
+	// private int[] rayOfInts;
+	// private int numInts;
 
 	//option 2
 	private ArrayList<Integer> listOfInts;
 
 	public IntStack()
 	{
-
+		listOfInts = new ArrayList<>();
 	}
 
 	public void push(int item)
 	{
-
+		listOfInts.add(item);
 	}
 
 	public int pop()
 	{
-		return 0;
+		return listOfInts.remove(listOfInts.size() - 1);
 	}
 
 	public boolean isEmpty()
 	{
-		return false;
+		return listOfInts.size() == 0;
 	}
 
 	public int peek()
 	{
-		return 0;
+		return listOfInts.get(listOfInts.size() - 1);
 	}
 
 	public String toString()
 	{
-		return "";
+		return listOfInts.toString();
 	}
 }
