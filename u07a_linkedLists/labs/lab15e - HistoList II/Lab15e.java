@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class - 
@@ -17,7 +17,6 @@ public class Lab15e
 			test.add(c);
 		}
 		System.out.println(test);
-
 
 		//add more test cases
 		

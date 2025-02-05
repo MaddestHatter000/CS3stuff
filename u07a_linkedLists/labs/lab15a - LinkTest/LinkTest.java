@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class - 
@@ -28,51 +28,51 @@ public class LinkTest
 	public double getSum(  )
 	{
 		double total=0;
-
-
-
-
+		for(int i : list)
+		{
+			total += i;
+		}
 		return total;
 	}
 
 	public double getAvg(  )
 	{
-		return 0;
+		return getSum()/list.size();
 	}
 
 	public int getLargest()
 	{
 		int largest=Integer.MIN_VALUE;
-
-
-
-
-
-
+		for(int i : list)
+		{
+			if(i>largest)
+			{
+				largest=i;
+			}
+		}
 		return largest;
 	}
 
 	public int getSmallest()
 	{
-		int smallest = smallest=Integer.MAX_VALUE;
-
-
-
-
-
-
-
+		int smallest=Integer.MAX_VALUE;
+		for(int i : list)
+		{
+			if(i<smallest)
+			{
+				smallest=i;
+			}
+		}
 		return smallest;
 	}
 
 	public String toString()
 	{
 		String output="";
-
-
-
-
-
+		output += "Sum :: " + getSum() + "\n";
+		output += "Avg :: " + getAvg() + "\n";
+		output += "Smallest :: " + getSmallest() + "\n";
+		output += "Largest :: " + getLargest() + "\n";
 		return output;
 	}
 }

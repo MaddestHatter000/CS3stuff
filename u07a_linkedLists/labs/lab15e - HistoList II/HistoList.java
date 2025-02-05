@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class - 
@@ -10,6 +10,7 @@ public class HistoList
 
 	public HistoList( )
 	{
+		front = null;
 	}
 
 
@@ -17,12 +18,34 @@ public class HistoList
 	//IF IT EXISTS, IT BUMPS UP LET'S COUNT BY ONE
 	public void add(Object obj)
 	{
+		ListNode current = front;
+		while(current != null)
+		{
+			if(new ThingCount(obj, 0).equals(current.getValue()))
+			{
+				((ThingCount)current.getValue()).setCount(((ThingCount)current.getValue()).getCount() + 1);
+				return;
+			}
+			current = current.getNext();
+		}
+		front = new ListNode(new ThingCount(obj, 1), front);
 	}
 
 	//RETURNS THE INDEX POSITION OF LET IN THE LIST
 	public int indexOf(Object obj)
 	{
-		int spot=-1;
+		ThingCount thisThing = new ThingCount(obj, 0);
+		int spot=0;
+		ListNode current = front;
+		while(current != null)
+		{
+			if(((ThingCount)current.getValue()).equals(thisThing))
+			{
+				return spot;
+			}
+			spot++;
+			current = current.getNext();
+		}
 		return -1;
 	}
 
@@ -30,6 +53,10 @@ public class HistoList
 	private ListNode nodeAt(int spot)
 	{
 		ListNode current=front;
+		for(int i = 0; i <= spot; i++)
+		{
+			current = current.getNext();
+		}
 		return current;
 	}
 
@@ -37,6 +64,12 @@ public class HistoList
 	public String toString()
 	{
 		String output = "";
+		ListNode current = front;
+		while(current != null)
+		{
+			output += current.getValue().toString() + " ";
+			current = current.getNext();
+		}
 		return output;
 	}
 }

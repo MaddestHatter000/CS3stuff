@@ -1,7 +1,7 @@
 import java.util.*;
 import static java.lang.System.*;
 
-public class Lab15cNEW
+public class Lab15c
 {
 	public static void main ( String[] args )
 	{
