@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class - 
@@ -17,11 +17,23 @@ public class HistoTree
 
 	public void addData(Comparable data)
 	{
+		add(data, root);
 	}
 
 	private HistoNode add(Comparable data, HistoNode tree)
 	{
-		return null;
+		if(tree == null)
+			return new HistoNode(data, 1, null, null);
+		if(tree.getData().equals(data)){
+			tree.setDataCount(tree.getDataCount() + 1);
+			return tree;
+		}
+		if(data.compareTo(tree.getData()) < 0){
+            tree.setLeft(add(data, tree.getLeft()));
+        } else {
+            tree.setRight(add(data, tree.getRight()));
+        }
+        return tree;
 	}
 
 	public HistoNode search(Comparable data)
@@ -36,11 +48,14 @@ public class HistoTree
 
 	public String toString()
 	{
-		return "";
+		return toString(root);
 	}
 
 	private String toString(HistoNode tree)
 	{
-		return "";
+		if (tree == null) {
+			return "";
+		}
+		return toString(tree.getLeft()) + tree.getData() + " " + tree.getDataCount() + "\n" + toString(tree.getRight());
 	}
 }

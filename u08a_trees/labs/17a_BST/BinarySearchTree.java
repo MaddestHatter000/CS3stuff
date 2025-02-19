@@ -175,21 +175,43 @@ public class BinarySearchTree
 
 	
 	//search
+	public boolean search(Comparable val)
+	{
+		return search(val, root);
+	}
+	public boolean search(Comparable val, TreeNode tree)
+	{
+		if(tree == null)
+			return false;
+		if(val.compareTo(tree.getValue()) == 0)
+			return true;
+		if(val.compareTo(tree.getValue()) < 0)
+			return search(val, tree.getLeft());
+		return search(val, tree.getRight());
+	}
 	
 	//getSmallest
 	public Comparable getSmallest(){
-		TreeNode tree = root;
-		while(tree != null &&tree.getLeft() != null)
-			tree = tree.getLeft();
-		return tree.getValue();
+		return getSmallest(root);
+	}
+	public Comparable getSmallest(TreeNode tree){
+		if(tree == null)
+			return null;
+		if(tree.getLeft() == null)
+			return tree.getValue();
+		return getSmallest(tree.getLeft());
 	}
 	
 	//getLargest
 	public Comparable getLargest(){
-		TreeNode tree = root;
-		while(tree != null &&tree.getRight() != null)
-			tree = tree.getRight();
-		return tree.getValue();
+		return getLargest(root);
+	}
+	public Comparable getLargest(TreeNode tree){
+		if(tree == null)
+			return null;
+		if(tree.getRight() == null)
+			return tree.getValue();	
+		return getLargest(tree.getRight());
 	}
 		
    	//getWidth
@@ -198,19 +220,62 @@ public class BinarySearchTree
 		   return getWidth(root);
 	   }
    
-	   private int getWidth(TreeNode tree)
-	   {
-		   if(tree == null)
+		private int getWidth(TreeNode tree)
+		{
+			if(tree == null)
 			   return 0;
-		   int myWidth = 1 + getHeight(tree.getLeft())
-			return 0;
-	   }
+			int myWidth = 1 + getHeight(tree.getLeft()) + getHeight(tree.getLeft());
+			int leftWidth = getWidth(tree.getLeft());
+			int rightWidth = getWidth(tree.getRight());
+			return myWidth > leftWidth ? myWidth > rightWidth ? myWidth : rightWidth : leftWidth;
+		}
 
 	
 
 	//remove
+	public void remove(Comparable val)
+	{
+		root = remove(val, root);
+	}
+	public TreeNode remove(Comparable val, TreeNode tree)
+	{
+		if(tree == null)
+			return null;
+		if(val.compareTo(tree.getValue()) < 0)
+			tree.setLeft(remove(val, tree.getLeft()));
+		else if(val.compareTo(tree.getValue()) > 0)
+			tree.setRight(remove(val, tree.getRight()));
+		else
+		{
+			if(tree.getLeft() == null)
+				return tree.getRight();
+			else if(tree.getRight() == null)
+				return tree.getLeft();
+			else
+			{
+				TreeNode temp = getSmallestNode(tree.getRight());
+				tree.setValue(temp.getValue());
+				tree.setRight(remove(temp.getValue(), tree.getRight()));
+			}
+		}
+		return tree;
+	}
 
+	public TreeNode getSmallestNode(TreeNode tree){
+		if(tree == null)
+			return null;
+		if(tree.getLeft() == null)
+			return tree;
+		return getSmallestNode(tree.getLeft());
+	}
 
+	public TreeNode getLargestNode(TreeNode tree){
+		if(tree == null)
+			return null;
+		if(tree.getLeft() == null)
+			return tree;
+		return getSmallestNode(tree.getRight());
+	}
 
    // Returns a String that represents 
    // an IN-ORDER traversal of the tree.
