@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class - 
@@ -11,53 +11,50 @@ public class ThingCount implements Comparable
 	
 	public ThingCount()
 	{
-
-
+		this(null, 0);
 	}
 	
 	public ThingCount(Object thang, int cnt)
 	{
-
-
+		setThing(thang);
+		setCount(cnt);
 	}
 
 	public void setThing(Object obj)
 	{
-		
-		
+		thing = obj;
 	}
 	
 	public void setCount(int cnt)
 	{
-
-
+		count = cnt;
 	}
 	
 	public Object getThing()
 	{
-		return null;
+		return thing;
 	}
 
 	public int getCount()
 	{
-		return 0;
+		return count;
 	}
 	
 	public boolean equals(Object obj)
 	{
 		ThingCount other = (ThingCount)obj;
-
-
-
+		if (thing.equals(other.getThing()) && count == other.getCount())
+			return true;
 		return false;
 	}
 	
 	public int compareTo(Object obj)
 	{
 		ThingCount other = (ThingCount)obj;
-
-
-
+		if (thing.equals(other.getThing()) && count == other.getCount())
+			return 0;
+		if (count > other.getCount())
+			return 1;
 		return -1;		
 	}
 	
