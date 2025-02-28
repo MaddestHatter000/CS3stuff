@@ -43,11 +43,12 @@ public class YourPQ
    //copy constructor and iterate through that.
 	public String getNaturalOrder()
 	{
-      Queue<T> copy = pQueue;
+      Queue<Monster> copy = pQueue;
 		String output="";
-
-
-
+		while(!copy.isEmpty())
+		{
+			output += copy.remove() + " ";
+		}
 		return output;		
 	}
 

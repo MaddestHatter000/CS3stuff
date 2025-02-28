@@ -39,11 +39,11 @@ public class Monster implements Comparable
                 if(((Monster)o).getWeight() == weight){
                     return 0;
                 }
-                return ((Monster)o).getWeight() - weight;
+                return weight - ((Monster)o).getWeight();
             }
-            return ((Monster)o).getHeight() - height;
+            return height - ((Monster)o).getHeight();
         }
-        return ((Monster)o).getAge() - age;
+        return age - ((Monster)o).getAge();
     }
     
     public String toString() {
