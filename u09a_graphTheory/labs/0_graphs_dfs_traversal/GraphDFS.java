@@ -3,18 +3,26 @@ import static java.lang.System.*;
 
 public class GraphDFS
 {
-   //Create an instance variable of your choice.
-   //The two top candidates are:
-   //  A map of strings to strings
-   //  A map of strings to lists
-   //  An array of strings
-   //  An array of lists
+   
+   Map<String, ArrayList<String>> graph;
 
    //The constructor should take a String of one-directional connections
    //as an input and add each connection to the graph.
+
    public GraphDFS(String line)
    {
-   
+      graph = new TreeMap<String, ArrayList<String>>();
+      Scanner scan = new Scanner(line);
+      while(scan.hasNext())
+      {
+         String i = scan.next();
+         String key = i.substring(0,1);
+         String val = i.substring(1);
+         if(!graph.containsKey(key)){
+            graph.put(key, new ArrayList<String>());
+         }
+         graph.get(key).add(val);
+      }
    }
 
    ////////////////////////////////////////////////////
@@ -40,35 +48,40 @@ public class GraphDFS
    public void dfs(String start)
    {
       //Bail if the starting key isn't even in the graph
-   
-   
+      if(!graph.containsKey(start))
+      {
+         return;
+      }
+      dfs(start, new TreeSet<String>());
    }
       
    //The recursive helper method:
    private void dfs(String start, Set<String> visited)
-   { 
-      //label v as discovered
-      
-      //for all neighbors of v
-      //  if neighbor is not labeled as discovered then
-      //    recursively call DFS on the neighbor
+   {
+      visited.add(start);
+      out.print(start);
+      for(String i : graph.get(start)){
+         if(!visited.contains(i)){
+            dfs(i, visited);
+         }
+      }
    } 
    
-   //public method called to run the iterative version: 
-   public void dfs(String start)
-   {
-    	//let SOS be a stack of stacks (it's really just a LinkedList)
-     	//SOS.addFront(v)
-     	//while SOS is not empty do
-      //  v = SOS.removeFront()
-      //    if v is not labeled as discovered then
-      //      label v as discovered
-      //      add to list of v's neighbors to the front of SOS, maintaining their order
-   }    
+   // //public method called to run the iterative version: 
+   // public void dfs(String start)
+   // {
+   //  	//let SOS be a stack of stacks (it's really just a LinkedList)
+   //   	//SOS.addFront(v)
+   //   	//while SOS is not empty do
+   //    //  v = SOS.removeFront()
+   //    //    if v is not labeled as discovered then
+   //    //      label v as discovered
+   //    //      add to list of v's neighbors to the front of SOS, maintaining their order
+   // }    
    
    @Override
    public String toString()
    {
-      return null;
+      return graph.toString();
    }
 }

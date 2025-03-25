@@ -2,16 +2,23 @@
 
 //Staticly import the members of the System class, or type System.out everywhere.
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class GraphRunner
 {
    public static void main( String[] args ) throws IOException
    { 
-      
-      GraphDFS tester = new GraphDFS("AB AC AD BA BF CA DC DE EA EF FE GE");
-      out.println(tester);
-      tester.dfs("A");
+      Scanner scan = new Scanner(new File("graph1.dat"));
+      GraphDFS tester;
           
-      //Use the above to get started.  Once it works, loop through all of the 
-      //graphs in each of the data files and make sure it works for all of them.
+      while(scan.hasNextLine()){
+         tester = new GraphDFS(scan.nextLine());  
+         System.out.println("\n\n" + tester);
+         tester.dfs(scan.nextLine());
+      }
+
+      
    }
 }

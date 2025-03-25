@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -13,12 +13,19 @@ public class GraphRunner
 {
 	public static void main( String[] args ) throws IOException
 	{
-		Scanner file = new Scanner(new File("graph1.dat"));
-		int howManyTimes = file.nextInt();
-		file.nextLine();
-		for(int x=0; x<howManyTimes; x++)
-		{
-			//add code here
+		Scanner scan = new Scanner(new File("graph1.dat"));
+		Graph tester;
+		while(scan.hasNextLine()){
+			tester = new Graph(scan.nextLine()); 
+			String i = scan.nextLine();
+			String src = i.substring(0,1);
+			String dest = i.substring(1);
+			if(tester.connected(src, dest)){
+				System.out.println(src + " is connected to " + dest);
+			}
+			else{
+				System.out.println(src + " is NOT connected to " + dest);
+			}
 		}
 	}
 }
