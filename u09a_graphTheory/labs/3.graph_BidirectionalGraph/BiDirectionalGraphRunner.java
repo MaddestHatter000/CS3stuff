@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -  
 //Class -
@@ -14,5 +14,21 @@ public class BiDirectionalGraphRunner
 {
 	public static void main( String[] args ) throws IOException
 	{
+		Scanner file = new Scanner(new File("bidgraph.dat"));
+		BiDirectionalGraph test;
+		int howManyTimes = file.nextInt();
+		file.nextLine();
+		for(int x = 0; x < howManyTimes; x++)
+		{
+			while(file.hasNext())
+			{
+				test = new BiDirectionalGraph(file.nextLine());
+				String first = file.next();
+				String second = file.next();
+				test.check(first, second);
+				System.out.println(first + " connects to " + second + " == " + test);
+				file.nextLine();
+			}
+		}
 	}
 }

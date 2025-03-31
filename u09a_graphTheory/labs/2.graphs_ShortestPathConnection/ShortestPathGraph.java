@@ -23,13 +23,14 @@ public class ShortestPathGraph
 		map = new TreeMap<String, ArrayList<String>>();
 		for (String i : line.split(" "))
 		{
-			String spotA = i.substring(0,1);
-			String spotB = i.substring(1);
+			String spotA = i.substring(0,1).trim();
+			String spotB = i.substring(1).trim();
 
 			if(!contains(spotA))
 				map.put(spotA, new ArrayList<>());
 			if(!contains(spotB))
 				map.put(spotB, new ArrayList<>());
+
 			map.get(spotA).add(spotB);
 			map.get(spotB).add(spotA);
 		}
@@ -37,15 +38,39 @@ public class ShortestPathGraph
 
 	public boolean contains(String letter)
 	{
-		return map.containsKey(letter)
+		return map.containsKey(letter);
 	}
 
-	public void check(String first, String second, String placesUsed, int steps)
+	public void check(String first, String second)
 	{
+		yayOrNay = false;
+		if(!contains(first))
+			return;
+		check(first, second, "", 0);
 	}
+
+	public void check(String current, String second, String placesUsed, int steps)
+	{
+		if(current.equals(second)){
+			if(yayOrNay == false)
+				shortest = steps;
+			yayOrNay = true;
+			shortest = Math.min(steps, shortest);
+			return;
+		}
+		for(String i : map.get(current))
+		{
+			if(!placesUsed.contains(i)){
+				check(i, second, placesUsed + current, steps + 1);
+			}
+		}
+	}
+
 
 	public String toString()
 	{
-		return "";
+		if(yayOrNay)
+			return "Yes in " + shortest + " steps";
+		return "no";
 	}
 }

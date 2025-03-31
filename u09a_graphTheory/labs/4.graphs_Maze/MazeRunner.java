@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -13,6 +13,32 @@ public class MazeRunner
 {
 	public static void main( String args[] ) throws IOException
 	{
-		//add test cases
+		Scanner file = new Scanner(new File("maze.dat"));
+		int cases = file.nextInt();
+		file.nextLine();
+		for(int i = 0; i < cases; i++)
+		{
+			int size = file.nextInt();
+			int[][] maze = new int[size][size];
+			file.nextLine();
+			for(int r = 0; r < size; r++)
+			{
+				for(int c = 0; c < size; c++)
+				{
+					maze[r][c] = file.nextInt();
+				}
+			}
+			Maze test = new Maze(maze);
+			System.out.print(test);
+			if(test.checkForExitPath(0, 0))
+			{
+				System.out.println("exit found\n");
+			}
+			else
+			{
+				System.out.println("exit not found\n");
+			}
+		}
+		
 	}
 }
