@@ -108,11 +108,13 @@ public abstract class Graph {
 	 */
 	public List<Integer> degreeSequence() {
 		// XXX: implement
-
-
-
-
-		return null;
+		List<Integer> degrees = new ArrayList<Integer>();
+		for (int i = 0; i < numVertices; i++) {
+			int degree = getNeighbors(i).size() + getInNeighbors(i).size();
+			degrees.add(degree);
+		}
+		Collections.sort(degrees, Collections.reverseOrder());
+		return degrees;
 	}
 
 	/**
