@@ -1,44 +1,56 @@
 import java.util.*;
 import java.io.*;
 
-public class Graph {
+public class GraphRefactored {
    private int SIZE;
-   private int[] cost;
-   private int[] prev;
-   private boolean[] done;
-   private int currentNode;
+   private int[][] matrix;
 
-   public void solve(int[][]matrix){
+   public GraphRefactored(int[][] matrix)
+   {
+      this.matrix = matrix;
+      this.SIZE = matrix.length;
+   }
+
+   public void solve(int[][] matrix){
       int count = 1;
-      this.SIZE = matrix.length;      
-      //Initalize cost, previous, and visited arrays
-
-   
-   
+      //Create cost, previous, and visited arrays
    
       //Fill cost array with "infinity"
-   
    
       /* Loop thru all nodes so that all have been visited
        * Nodes are numbered starting a zero, but will be displayed
        * such that node 0 displays as "A", node 1 as "B", etc.
        * This means your loop just iterates through 0, 1, etc.
        */
-      for(){
-        	//find the node with mininum cost and set as current node
-
+      for(  ) {
+        	//implement the nodeWithMinCost method so it finds the node with minimun cost
+         int currentNode = nodeWithMinCost(visited, cost);
       
       	// mark the current node as visited
       
-      	//update the cheapest cost if applicable
+         // update the cheapest cost to each neighbor
       
-         //displays arrays after each pass of the outer loop
-         System.out.println("Verify: pass #" + count++);
-         System.out.println(Arrays.toString(prev));
-         System.out.println(Arrays.toString(visited));
-         System.out.println(Arrays.toString(cost)+"\n");
-      }   
-      //displays the paths
+      
+         displayState(count++, prev, visited, cost);
+      }
+      displayResults(prev, visited, cost);
+   }
+   
+   private int nodeWithMinCost(boolean[] visited, int[] cost) {
+   
+      return 0;
+   }
+   
+   //Shows the state of each array
+   private void displayState(int count, int[] prev, boolean[] visited, int[] cost) {
+      System.out.println("Verify: pass #" + count);
+      System.out.println(Arrays.toString(prev));
+      System.out.println(Arrays.toString(visited));
+      System.out.println(Arrays.toString(cost)+"\n");
+   }
+   
+   //Displays
+   private void displayResults(int[] prev, boolean[] visited, int[] cost) {
       char letter = 'A';
       for(int i=1; i<SIZE;i++){
          System.out.print("Path from " + letter + " to " + (char)(i+65) + ":  ");
@@ -52,11 +64,10 @@ public class Graph {
          }while(cost[spot] != 0);
          System.out.println(path);
       }
-   
-   
    }
+   
    public static void main(String[] args) {
-      Graph test = new Graph();
+      GraphRefactored test = new GraphRefactored();
    	                                 //  A    B    C    D    E    F    G
       int[][] matrix = new int[][]{ 	{   0,   7,   0,   5,   0,   0,   0 },
          					         		{   7,   0,   8,   9,   7,   0,   0 },
@@ -84,3 +95,4 @@ public class Graph {
       test.solve(matrixTwo);
    }
 }
+

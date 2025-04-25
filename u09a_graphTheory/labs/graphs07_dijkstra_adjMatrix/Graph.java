@@ -12,7 +12,6 @@ public class Graph {
       int count = 1;
       this.SIZE = matrix.length;      
       //Initalize cost, previous, and visited arrays
-
    
    
    
@@ -24,16 +23,15 @@ public class Graph {
        * such that node 0 displays as "A", node 1 as "B", etc.
        * This means your loop just iterates through 0, 1, etc.
        */
-      for(){
+      for(  ){
         	//find the node with mininum cost and set as current node
-
       
       	// mark the current node as visited
       
       	//update the cheapest cost if applicable
       
          //displays arrays after each pass of the outer loop
-         System.out.println("Verify: pass #" + count++);
+         System.out.println("Verify: pass #"+count++);
          System.out.println(Arrays.toString(prev));
          System.out.println(Arrays.toString(visited));
          System.out.println(Arrays.toString(cost)+"\n");
@@ -84,3 +82,4 @@ public class Graph {
       test.solve(matrixTwo);
    }
 }
+
