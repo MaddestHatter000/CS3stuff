@@ -2,7 +2,7 @@ import java.util.*;
 import static java.lang.System.*;
 
 public class Graph {
-   private Map<String, ?????> graph;
+   private Map<String, List<String>> graph;
    private boolean directed;
    
    /*  This is similar to the previous graphs, except since it's a weighted
@@ -20,11 +20,27 @@ public class Graph {
     *  edge store the name of the target node and weight of the edge. 
     */
    public Graph(boolean directed, String line) {
-      
+      this.directed = directed;
+      this.graph = new HashMap<>();
+      for (String part : line.split(" ")) {
+         String n1 = part.substring(0,1);
+         String n2 = part.substring(1,2);
+         String cost = part.substring(2);
+
+         if(!graph.containsKey(n1))
+            graph.put(n1, new LinkedList<String>());
+         graph.get(n1).add(n2+cost);
+         if(!graph.containsKey(n2))
+               graph.put(n2, new LinkedList<String>());
+         if(!directed){
+            graph.get(n2).add(n1+cost);
+         }
+      }
    }
 
    public boolean contains(String letter) {
       return graph.containsKey(letter);
+      
    }
 
    /** Dijkstra's Algorithm: **/ 
@@ -33,8 +49,18 @@ public class Graph {
       //  - make maps to store the costs and previous nodes and a set to keep track of the visited nodes.
       //  - Map each vertex to a cost of Double.POSITIVE_INFINITY and previous as null.
       //  - Set the cost of the starting node to zero. 
-        
- 
+
+
+      Map<String, String> previouses = new HashMap<>();
+      Map<String, Double> costs = new HashMap<>();
+      for(String i : graph.keySet())
+      {
+         costs.put(i, Double.POSITIVE_INFINITY);
+         previouses.put(i, null);
+      }
+      costs.put(start, 0.0);
+      
+      
       // Loop size times:
       //    Find the node with the smallest cost not yet visited and set is as the current node
       //    If there are no more reachable nodes, stop looping.
@@ -47,16 +73,24 @@ public class Graph {
       //           Update the cheapest cost and prev 
       
       // loop header goes here
+      Set<String> visited = new HashSet<>();
+      for(int i = 0; i < graph.size(); i ++)
       {
          String node = getNodeWithMinCost(costs, visited);
          if (node == null) {
             break;
          }
-         
-         
-         
-         
-         
+         visited.add(node);
+         for(String nextNode : graph.get(node))
+         {
+            String next = nextNode.replaceAll("[^A-Za-z]", "");
+            Double cost = Double.parseDouble(nextNode.replaceAll("[^0-9.]", ""));
+            if(costs.get(next) > (costs.get(node) + cost))
+            {
+               previouses.put(next, node);
+               costs.put(next, (costs.get(node) + cost));
+            }
+         }
          // I put this inside the loop so I could see whether the costs
          // and previous nodes were updating properly. Feel free to move
          // after the loop once you're done. 
@@ -82,14 +116,20 @@ public class Graph {
     *  - Return the name of the first node in the list
     */
    private String getNodeWithMinCost(Map<String, Double> costs, Set<String> visited) {
-      List<Map.Entry<String, Double>> smallestCosts = new ArrayList<>();
-      for(Map.Entry<String, Double> e : costs.entrySet()) {
-         /* Complete!!! */
-
+      List<String> smallestCosts = new ArrayList<>();
+      for(String e : costs.keySet()) {
+         if(visited.contains(e))
+           continue;
+         if(smallestCosts.size() == 0 || costs.get(smallestCosts.get(0)) == costs.get(e)){
+            smallestCosts.add(e);
+         }
+         if(costs.get(smallestCosts.get(0)) > costs.get(e)){
+            smallestCosts.clear();
+            smallestCosts.add(e);
+         }
       }
-
-
-      return null;
+      Collections.sort(smallestCosts);
+      return smallestCosts.get(0);
    } 
    
    // An inner class to be used in getNodeWithMinCost() above if opting not
@@ -115,18 +155,28 @@ public class Graph {
    }
    
    private void displayPaths(String start, Map<String, Double> costs, Map<String, String> previouses) {
+      out.println(graph);
       for (String v : graph.keySet()) {
          if ( ! v.equals(start) ) {
             System.out.print("Path from " + start + " to " + v + ":  ");
             // If the cost of the current node == Double.POSITIVE_INFINITY
             //    print "does not exist."
             String node = v;
-            String path = v;
-            //loop
-            //   node = previous node
-            //   concatenate the current node and an arrow onto path
-            //   node = previous node
-            System.out.println(path);
+            if(costs.get(node) == Double.POSITIVE_INFINITY)
+               System.out.println("does not exist");
+            else{
+               String path = v;
+               //loop
+               //   node = previous node
+               //   concatenate the current node and an arrow onto path
+               //   node = previous node
+               while(!node.equals(start))
+               {
+                  node = previouses.get(node);
+                  path = node + " -> " + path;
+               }
+               System.out.println(path);
+            }
          }
       }
    }   
